@@ -34,9 +34,9 @@ class tditEvent {
 	constructor(eventID) {
 		this.ID = String(eventID);
 		this.eventData = this.findEvent(this.ID);
-		this.title = this.eventData.name;
-		this.eventDate = this.eventData.dob;
-		this.summary = this.eventData.age;
+		this.title = this.eventData.title;
+		this.eventDate = this.eventData.eventDate;
+		this.summary = this.eventData.summary;
 		this.image = this.eventData.image;
 
 	}
