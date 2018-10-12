@@ -1,0 +1,18 @@
+.main-div{
+	width: 50%;
+	border: 1px solid #000000;
+	margin: 0 auto;
+	float: left;
+    padding: 1%;
+}
+
+.left-panel, .right-panel{
+	width: 50%;
+	float:left;
+}
+.share-button{
+	width: 100px;
+    border: 1px solid #000000;
+    background: #fff;
+	font-weight:bold;
+}
