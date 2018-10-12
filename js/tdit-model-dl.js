@@ -38,9 +38,10 @@ class tditEvent {
 		this.eventDate = this.eventData.eventDate;
 		this.summary = this.eventData.summary;
 		this.image = this.eventData.image;
-
+		this.relatedItems = this.eventData.relatedItems;
+		this.tags = this.findTags(this.relatedItems)
 	}
-
+	// look up record based on id
 	findEvent(eventID) {
 		let eventData = tditModel.Data.find(x => x.id === eventID);
 		if (typeof eventData == 'undefined' ) {
@@ -53,6 +54,16 @@ class tditEvent {
 	  		};
   		}
 		return eventData;
+	}
+
+	findTags(relatedItems) {
+		let tags = [];
+		
+		for (let i=0; i<relatedItems.length; i++ ) {
+			tags[i] = tditModel.tags.find(x => x.name === relatedItems[i]);
+		}
+		return tags;
+
 	}
 
 }
