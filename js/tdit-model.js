@@ -16,6 +16,8 @@ tditModel.Data = [
 	{	id: "1310", title: "Superstar Fire Tech Developer born", eventDate: "1990-10-13", summary: "Khushboo Sharma, Web Developer, was born in Gujurat India",  image: "https://scontent-lht6-1.cdninstagram.com/vp/abd44c7fde0401eaf289ba8e1bf43d4d/5C5C5E75/t51.2885-15/sh0.08/e35/p640x640/42173846_744972985846714_528677272311884953_n.jpg", relatedItems: ["Khushboo"]	},
 	{	id: "1410", title: "First Web Browser ", eventDate: "1990-10-14", summary: "Tim Berners-Lee invented the first web browser to display and edit the World Wide Web",  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg/330px-Sir_Tim_Berners-Lee_%28cropped%29.jpg", relatedItems: ["Tim Berners-Lee"]	},
 	{	id: "1510", title: "Fire Tech Launches", eventDate: "2013-10-15", summary: "Jill Hodges founds Fire Tech and launches the first summer camp",  image: "https://cdn.firetechcamp.com/wp-content/uploads/2018/09/05151439/how-we-got-there2.jpg", relatedItems: ["Jill Hodges", "Fire Tech"]	},
+	{	id: "2610", title: "Pay Day", eventDate: "2018-10-26", summary: "Fire Tech staff get paid and keep the lights on for another month",  image: "https://media.giphy.com/media/5fBH6z8aMV1RbA4FaSc/giphy.gif", relatedItems: ["Money", "Fire Tech"]	},
+	{	id: "2610b", title: "Dev team completes sprint on schedule", eventDate: "2018-10-26", summary: "Against all the odds the Fire Tech Dev team completes a sprint on time for the first time ever.",  image: "https://media.giphy.com/media/p3P8lFeNeemwcPY00B/giphy.gif", relatedItems: ["Fire Tech"]	},
 ];
 
 // tditModel.tags is an taxonomy referenced by tditModel.Data records. They are names of tags and links to their webpages they have a 1 to many relationship
@@ -25,7 +27,8 @@ tditModel.tags = [
 		{ name: "Tim Berners-Lee", url: "https://en.wikipedia.org/wiki/Tim_Berners-Lee#Career" },
 		{ name: "Khushboo", url: "https://stackoverflow.com/users/3717479/khushboo" },
 		{ name: "Jill Hodges", url: "https://www.firetechcamp.com/about/" },
-		{ name: "Fire Tech", url: "https://www.firetechcamp.com/" }
+		{ name: "Fire Tech", url: "https://www.firetechcamp.com/" },
+		{ name: "Money", url: "https://giphy.com/search/money" }
 ]
 
 /* **************************
@@ -46,7 +49,7 @@ class tditEvent {
 	}
 	// look up record based on id
 	findEvent(eventID) {
-		let eventData = tditModel.Data.find(x => x.id === eventID);
+		let eventData = tditModel.Data.find(eventRecord => eventRecord.id === eventID);
 		if (typeof eventData == 'undefined' ) {
   		
 	  		eventData = {
@@ -63,7 +66,7 @@ class tditEvent {
 		let tags = [];
 		
 		for (let i=0; i<relatedItems.length; i++ ) {
-			tags[i] = tditModel.tags.find(x => x.name === relatedItems[i]);
+			tags[i] = tditModel.tags.find(tag => tag.name === relatedItems[i]);
 		}
 		return tags;
 
