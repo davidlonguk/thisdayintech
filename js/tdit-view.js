@@ -16,19 +16,24 @@ EventView.prototype.render = function render(viewEvent) {
 
 //var tditRender = {};
 
-function renderEvent(eventData) {
+function renderEvent(eventData, replace) {
 
 	const monthNames = ["January", "February", "March", "April", "May", "June",
 	  "July", "August", "September", "October", "November", "December"
 	];
-
 	let targetDate = new Date(eventData.eventDate);
 
-	let renderHTML = `<div class="main-div">
+	let renderHTML = "";
+	if(replace == true)	{
+		renderHTML +=  "<h1>" + targetDate.getDate() + " " + monthNames[targetDate.getMonth()] + "</h1>";
+	}
+	
+
+	renderHTML += `<div class="main-div">
 				<div class="left-panel">
-					`;
-	renderHTML +=  "<h2>" + targetDate.getDate() + " " + monthNames[targetDate.getMonth()] + "</h2>";
-	renderHTML +=  '<img src="' + eventData.image + '" alt="' + eventData.title +'" width="200">';
+				`;
+	
+	renderHTML +=  '<img src="' + eventData.image + '" alt="' + eventData.title +'" width="300">';
 	renderHTML +=  '<p>	In This Event:<br/>';
 	for (var i = 0; i < eventData.tags.length; i++) {
 	 renderHTML += ' <a href="' + eventData.tags[i].url + '">' + eventData.tags[i].name +  '</a> &nbsp;';
@@ -45,8 +50,14 @@ function renderEvent(eventData) {
 			</div>
 		</div>
 		`;
+		if (replace == true) {
+			$( document ).ready(function() {
+				$("#tdit").html(renderHTML);
+			});
+		} else {
+			$( document ).ready(function() {
+				$("#tdit").append(renderHTML);
+			});
+		}
 
-		$( document ).ready(function() {
-			$("#tdit").html(renderHTML);
-		});
 }

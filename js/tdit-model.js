@@ -72,4 +72,36 @@ class tditEvent {
 
 	}
 
+	getTitle() {
+		return this.title;
+	}
+
+
+}
+class tditLookUp {
+
+	constructor(eventDay) {
+		this.eventDay = String(eventDay);
+		this.matchedIDs = this.findEvent(this.eventDay);
+		//this.eventRecords = this.findEvent(this.eventDay);
+		
+	}
+	findEvent(eventDay) {
+		let eventData = tditModel.Data.filter(eventRecord => eventRecord.eventDate.includes(eventDay));
+		//console.log(eventData);
+		let idArray = [];
+		
+		if (typeof eventData == 'undefined' ) {	
+	  		return;
+  		} else {
+  			eventData.forEach(function(eventRecord){
+  				idArray.push(eventRecord.id);
+  		}) ;
+
+  			
+  		return idArray;
+  			//return eventData.length;
+  		}
+	}
+
 }
