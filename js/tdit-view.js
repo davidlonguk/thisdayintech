@@ -36,7 +36,7 @@ function renderEvent(eventData) {
 	renderHTML += `</p>
 				</div>
 				<div class="right-panel">`;
-	renderHTML += '<h4>On this Day: ' + eventData.title + '</h4>';
+	renderHTML += '<h4>On this Day in ' + targetDate.getFullYear() + ': ' + eventData.title + '</h4>';
 	renderHTML += '<p>' + eventData.summary + '</p>';
 	renderHTML += `<p>
 						<button name="share-btn" class="share-button">Share</button>
