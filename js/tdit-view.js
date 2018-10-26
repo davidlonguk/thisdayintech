@@ -28,7 +28,7 @@ function renderEvent(eventData) {
 				<div class="left-panel">
 					`;
 	renderHTML +=  "<h2>" + targetDate.getDate() + " " + monthNames[targetDate.getMonth()] + "</h2>";
-	renderHTML +=  '<img src="' + eventData.image + '" alt="' + eventData.title +'" width="200">';
+	renderHTML +=  '<img src="' + eventData.image + '" alt="' + eventData.title +'" width="350">';
 	renderHTML +=  '<p>	In This Event:<br/>';
 	for (var i = 0; i < eventData.tags.length; i++) {
 	 renderHTML += ' <a href="' + eventData.tags[i].url + '">' + eventData.tags[i].name +  '</a> &nbsp;';
